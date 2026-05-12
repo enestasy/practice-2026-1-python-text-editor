@@ -3,12 +3,198 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>О проекте - Python Text Editor</title>
+  <title>О проекте - D&D Scenario Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #0ea5e9;
+      --bg: #f8f9f2;
+      --text: #1e293b;
+      --card: #ffffff;
+      --accent: #eab308;
+      --grid: rgba(148, 163, 184, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+      padding-top: 2px;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--primary);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0%; height: 3px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+      border-radius: 2px;
+    }
+    nav a:hover { color: var(--secondary); }
+    nav a:hover::after { width: 100%; }
+
+    main {
+      max-width: 860px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      counter-reset: lesson;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 1.8rem 2rem;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 0 #cbd5e1;
+      margin-bottom: 2rem;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s;
+      counter-increment: lesson;
+    }
+    .card::before {
+      content: "Ячейка #" counter(lesson);
+      position: absolute;
+      top: -12px; right: 16px;
+      background: var(--accent);
+      color: #422006;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 100px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.12), 0 2px 0 #cbd5e1;
+      border-left-color: var(--accent);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 1.2rem 0;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      background: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #64748b;
+      font-size: 0.85rem;
+      border-top: 2px solid #e2e8f0;
+      margin-top: 3rem;
+      background: rgba(255,255,255,0.6);
+      letter-spacing: 0.2px;
+    }
+
+    .feature-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .feature-item {
+      background: #f8fafc;
+      padding: 1.2rem;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+      border-top: 3px solid var(--secondary);
+    }
+    .feature-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .tech-badge {
+      background: var(--primary);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid #334155;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    th {
+      background: #f1f5f9;
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 2px solid #cbd5e1;
+      color: var(--primary);
+    }
+    td {
+      padding: 0.8rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 1rem; text-align: center; }
+      nav { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+      nav a { margin: 0; }
+      .card { padding: 1.5rem; }
+      .card::before { top: -10px; right: 10px; font-size: 0.7rem; }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1> Python Text Editor</h1>
+    <h1>🎲 D&D Scenario Editor</h1>
     <nav>
       <a href="index.html">Главная</a>
       <a href="about.html">О проекте</a>
@@ -19,18 +205,93 @@
   </header>
   <main>
     <div class="card">
-      <h2>Описание проекта</h2>
-      <p>Цель проекта — изучить основы GUI-разработки на Python, работу с файловой системой и организацию кода в рамках командной практики. Редактор создавался с нуля на основе tutorial, затем был расширен собственными модификациями.</p>
-      <h3>Технологический стек</h3>
-      <ul>
-        <li>Python 3.12</li>
-        <li>tkinter (встроенная GUI-библиотека)</li>
-        <li>Git/GitHub для контроля версий</li>
-        <li>Markdown для документации</li>
+      <h2>📖 Описание проекта</h2>
+      <p><strong>D&D Scenario Editor</strong> — специализированный текстовый редактор для мастеров подземелий, разработанный в рамках проектной практики Московского Политеха (группа 251-333). Приложение предназначено для создания, редактирования и структурирования сценариев настольных ролевых игр Dungeons & Dragons.</p>
+      
+      <p>Проект выполнен в связке с учебным проектом <strong>«Подземелья Политеха»</strong> и учитывает потребности партнёра — издательства настольных игр <strong>«Экивоки»</strong>. Редактор помогает мастерам быстро создавать локации, NPC, боевые сцены и диалоги с визуальной подсветкой ключевых элементов.</p>
+
+      <h3>🎯 Цели и задачи</h3>
+      <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+        <li>Разработать удобный инструмент для ведения заметок во время D&D-сессий</li>
+        <li>Реализовать подсветку синтаксиса для D&D-тегов ([БОЙ], [ЛУТ], [NPC] и др.)</li>
+        <li>Создать библиотеку шаблонов для быстрого старта сцен</li>
+        <li>Добавить встроенный генератор бросков кубиков (d4–d100)</li>
+        <li>Обеспечить экспорт сценариев в HTML для использования на стримах</li>
+        <li>Освоить командную работу через Git/GitHub</li>
       </ul>
-      <img src="img/architecture.png" alt="Схема архитектуры приложения">
+
+      <h3>⚙️ Технологический стек</h3>
+      <div class="tech-stack">
+        <span class="tech-badge">Python 3.10+</span>
+        <span class="tech-badge">tkinter (GUI)</span>
+        <span class="tech-badge">Git/GitHub</span>
+        <span class="tech-badge">Markdown</span>
+        <span class="tech-badge">HTML/CSS</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✨ Ключевые возможности</h3>
+      <div class="feature-list-grid">
+        <div class="feature-item">
+          <h4>🎨 Подсветка тегов</h4>
+          <p>8 категорий D&D-элементов подсвечиваются разными цветами: бои (красный), проверки (оранжевый), лут (зелёный), NPC (фиолетовый) и др.</p>
+        </div>
+        <div class="feature-item">
+          <h4>📝 Шаблоны сцен</h4>
+          <p>5 готовых шаблонов: локация, NPC, боевая сцена, сокровище, диалог. Вставляются в один клик через меню.</p>
+        </div>
+        <div class="feature-item">
+          <h4>🎲 Генератор кубиков</h4>
+          <p>Встроенный рандомайзер для d4, d6, d8, d10, d12, d20, d100. Результат автоматически вставляется в текст.</p>
+        </div>
+        <div class="feature-item">
+          <h4>📊 Статистика сценария</h4>
+          <p>Модальное окно показывает количество локаций, NPC, боёв, проверок и других элементов в текущем файле.</p>
+        </div>
+        <div class="feature-item">
+          <h4>💾 Экспорт в HTML</h4>
+          <p>Конверсия Markdown-разметки в веб-страницу с сохранением цветовой схемы тегов. Идеально для стримов.</p>
+        </div>
+        <div class="feature-item">
+          <h4>🌙 Тёмная тема</h4>
+          <p>Переключение между светлой и тёмной палитрами интерфейса по Ctrl+T. Комфорт для глаз при ночных сессиях.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🏗 Архитектура приложения</h3>
+      <p>Приложение построено на основе ООП-подхода. Основной класс <code>DnDEditor</code> инкапсулирует логику GUI, обработки событий и управления состоянием. Подсветка синтаксиса реализована через динамическое применение тегов tkinter с использованием регулярных выражений.</p>
+      
+      <h3>👥 Команда разработки</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ФИО</th>
+            <th>Роль</th>
+            <th>Ключевой вклад</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Труфанова Анастасия Максимовна</strong></td>
+            <td>Документация, Web, Организация</td>
+            <td>Вёрстка сайта, TECHNICAL_GUIDE.md, отчёты, скриншоты, координация Git</td>
+          </tr>
+          <tr>
+            <td><strong>Русскова Валерия Андреевна</strong></td>
+            <td>Разработка ядра, Тестирование</td>
+            <td>Исследование tkinter, реализация классов, модификации (подсветка, кубики, темы), отладка</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>📅 Период разработки</h3>
+      <p><strong>3 февраля – 12 мая 2026 г.</strong> (14 недель)</p>
+      <p>Все этапы выполнены в срок, отклонений от контрольных точек не зафиксировано. Приложение протестировано на Windows 10 и Ubuntu 22.04 LTS.</p>
     </div>
   </main>
-  <footer>© 2026 Проектная практика. Все права защищены.</footer>
+  <footer>© 2026 Проектная практика. Московский Политех. Все права защищены.</footer>
 </body>
 </html>

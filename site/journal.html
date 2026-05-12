@@ -3,12 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Журнал - Python Text Editor</title>
+  <title>Журнал прогресса - D&D Scenario Editor</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Небольшие дополнения для журнала, чтобы всё лежало красиво */
+    .log-entry {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--grid);
+    }
+    .log-entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .log-date {
+      font-family: 'Inter', monospace;
+      font-weight: 700;
+      color: var(--secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    .log-content {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .log-meta {
+      font-size: 0.85rem;
+      color: #64748b;
+      font-style: italic;
+    }
+    
+    /* Сетка для метрик переиспользует стили с главной */
+    .metrics-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .metric-box {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+    .metric-val {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .metric-lbl {
+      font-size: 0.8rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.5rem;
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1> Python Text Editor</h1>
+    <h1>🎲 D&D Scenario Editor</h1>
     <nav>
       <a href="index.html">Главная</a>
       <a href="about.html">О проекте</a>
@@ -20,35 +82,293 @@
   <main>
     <div class="card">
       <h2>📅 Журнал прогресса</h2>
-      
-      <h3>Запись 1: 25.04.2025</h3>
-      <p>Создана структура репозитория, настроен Git, добавлен базовый код редактора из tutorial. Изучены основы tkinter и работа с файловыми диалогами.</p>
-      
-      <h3>Запись 2: 28.04.2025</h3>
-      <p>Добавлена строка состояния с подсчётом слов и символов. Реализованы горячие клавиши. Начата работа над документацией и сайтом проекта.</p>
-      
-      <h3>Запись 3: 02.05.2025</h3>
-      <p>Завершена вёрстка сайта, добавлены скриншоты и схемы. Проведено тестирование на разных ОС. Подготовлен черновик технического руководства.</p>
-      
-      <img src="img/journal_progress.png" alt="График прогресса работы">
+      <p><strong>Проект:</strong> Разработка специализированного редактора сценариев DnDEditor<br>
+      <strong>Период:</strong> 3 февраля – 12 мая 2026 г.<br>
+      <strong>Участники:</strong> Русскова Валерия Андреевна, Труфанова Анастасия Максимовна (группа 251-333)</p>
     </div>
 
+    <!-- ФЕВРАЛЬ -->
     <div class="card">
-      <h2>📅 Журнал прогресса</h2>
+      <h2>❄️ ФЕВРАЛЬ 2026</h2>
       
-      <h3>Запись 1: 25.04.2025</h3>
-      <p>Создана структура репозитория, настроен Git, добавлен базовый код редактора из tutorial. Изучены основы tkinter и работа с файловыми диалогами.</p>
-      
-      <h3>Запись 2: 28.04.2025</h3>
-      <p>Добавлена строка состояния с подсчётом слов и символов. Реализованы горячие клавиши. Начата работа над документацией и сайтом проекта.</p>
-      
-      <h3>Запись 3: 02.05.2025</h3>
-      <p>Завершена вёрстка сайта, добавлены скриншоты и схемы. Проведено тестирование на разных ОС. Подготовлен черновик технического руководства.</p>
-      
-      <img src="img/journal_progress.png" alt="График прогресса работы">
+      <div class="log-entry">
+        <span class="log-date">03.02.2026</span>
+        <p class="log-content">Знакомство с заданием практики, анализ требований к редактору сценариев, изучение проекта «Подземелья Политеха»</p>
+        <div class="log-meta">👥 Ответственные: Оба участника</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">05.02.2026</span>
+        <p class="log-content">Исследование GUI-библиотек Python (tkinter, PyQt, CustomTkinter), обоснование выбора стека</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">07.02.2026</span>
+        <p class="log-content">Настройка рабочего окружения: установка Python 3.10+, проверка tkinter, инициализация репозитория на GitHub</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">10.02.2026</span>
+        <p class="log-content">Создание структуры репозитория: папки src/, docs/, файлы .gitignore, README.md</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">12.02.2026</span>
+        <p class="log-content">Разработка прототипа главного окна приложения: базовый класс DnDEditor, текстовое поле, прокрутка</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">14.02.2026</span>
+        <p class="log-content">Реализация системы меню: Файл, Шаблоны, Инструменты, Помощь</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">17.02.2026</span>
+        <p class="log-content">Настройка файловых операций: создание, открытие, сохранение .md и .txt файлов с поддержкой UTF-8</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">20.02.2026</span>
+        <p class="log-content">Составление списка D&D-тегов для подсветки: [БОЙ], [ПРОВЕРКА:], [ЛУТ], [NPC], [ЛОКАЦИЯ], [СОБЫТИЕ], [ДИАЛОГ], [СЕКРЕТ]</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">24.02.2026</span>
+        <p class="log-content">Разработка цветовой схемы для категорий тегов, настройка tag_configure в tkinter</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">28.02.2026</span>
+        <p class="log-content">Первая рабочая версия: текстовый редактор с меню и сохранением файлов</p>
+        <div class="log-meta">👥 Ответственные: Оба участника</div>
+      </div>
     </div>
-    
+
+    <!-- МАРТ -->
+    <div class="card">
+      <h2>🌸 МАРТ 2026</h2>
+      
+      <div class="log-entry">
+        <span class="log-date">03.03.2026</span>
+        <p class="log-content">Реализация функции _highlight_tags(): динамическая подсветка D&D-тегов с использованием модуля re</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">05.03.2026</span>
+        <p class="log-content">Добавление поддержки Markdown: жирный текст через **текст**, затемнение служебных символов</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">07.03.2026</span>
+        <p class="log-content">Создание панели быстрых кнопок для вставки тегов, привязка цветов к категориям</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">10.03.2026</span>
+        <p class="log-content">Разработка шаблонов сцен: локация, NPC, боевая сцена, лут, диалог — структура и наполнение</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">12.03.2026</span>
+        <p class="log-content">Интеграция шаблонов в меню приложения, функция _insert_*_template()</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">15.03.2026</span>
+        <p class="log-content">Реализация строки состояния: подсчёт строк, слов, элементов каждого типа в реальном времени</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">17.03.2026</span>
+        <p class="log-content">Написание черновика TECHNICAL_GUIDE.md: архитектура, пошаговая реализация, описание модификаций</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">20.03.2026</span>
+        <p class="log-content">Добавление генератора бросков кубиков: окно выбора типа кубика (d4–d100), вставка результата в текст</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">24.03.2026</span>
+        <p class="log-content">Реализация модуля статистики сценария: модальное окно с подсчётом элементов по категориям</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">27.03.2026</span>
+        <p class="log-content">Внедрение переключения темы интерфейса: тёмная/светлая схема, сохранение состояния</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">31.03.2026</span>
+        <p class="log-content">Тестирование подсветки синтаксиса на больших объёмах текста, оптимизация производительности</p>
+        <div class="log-meta">👥 Ответственные: Оба участника</div>
+      </div>
+    </div>
+
+    <!-- АПРЕЛЬ -->
+    <div class="card">
+      <h2>🌺 АПРЕЛЬ 2026</h2>
+      
+      <div class="log-entry">
+        <span class="log-date">02.04.2026</span>
+        <p class="log-content">Реализация экспорта в HTML: конверсия Markdown, сохранение цветовой разметки тегов</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">05.04.2026</span>
+        <p class="log-content">Привязка горячих клавиш: Ctrl+N/O/S/E/D/T/Q, обработка сочетаний с Shift</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">08.04.2026</span>
+        <p class="log-content">Написание справки по тегам и окна «О программе», добавление в меню «Помощь»</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">10.04.2026</span>
+        <p class="log-content">Функциональное тестирование: проверка всех кнопок, меню, экспорта, переключения темы на Windows и Linux</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">12.04.2026</span>
+        <p class="log-content">Исправление ошибок парсинга: обработка спецсимволов в тегах, экранирование в регулярных выражениях</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">15.04.2026</span>
+        <p class="log-content">Подготовка скриншотов интерфейса для документации: главное окно, подсветка, генератор бросков, статистика</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">18.04.2026</span>
+        <p class="log-content">Финализация README.md: описание проекта, функционал, установка, структура документации</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">22.04.2026</span>
+        <p class="log-content">Оформление индивидуальных планов участников в формате Markdown, таблица ответственности</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">25.04.2026</span>
+        <p class="log-content">Написание отчёта о взаимодействии с организацией-партнёром («Экивоки»)</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">28.04.2026</span>
+        <p class="log-content">Подготовка итогового отчёта по практике: введение, этапы, результаты, вклад участников, заключение</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">30.04.2026</span>
+        <p class="log-content">Комментирование исходного кода, структурирование файла src/main.py, добавление docstring</p>
+        <div class="log-meta">👤 Ответственный: Русскова В.А.</div>
+      </div>
+    </div>
+
+    <!-- МАЙ -->
+    <div class="card">
+      <h2>🌟 МАЙ 2026</h2>
+      
+      <div class="log-entry">
+        <span class="log-date">02.05.2026</span>
+        <p class="log-content">Финальное тестирование сборки: запуск на чистом окружении, проверка отсутствия зависимостей</p>
+        <div class="log-meta">👥 Ответственные: Оба участника</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">05.05.2026</span>
+        <p class="log-content">Загрузка всех файлов в репозиторий GitHub: код, документация, отчёты, скриншоты</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">08.05.2026</span>
+        <p class="log-content">Проверка отображения Markdown-файлов на GitHub, исправление форматирования таблиц и списков</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">10.05.2026</span>
+        <p class="log-content">Подготовка презентации проекта: структура, ключевые функции, демонстрация работы редактора</p>
+        <div class="log-meta">👥 Ответственные: Оба участника</div>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-date">12.05.2026</span>
+        <p class="log-content">Сдача материалов: загрузка отчётов в СДО, отправка ссылки на репозиторий руководителю практики</p>
+        <div class="log-meta">👤 Ответственный: Труфанова А.М.</div>
+      </div>
+    </div>
+
+    <!-- ИТОГОВЫЕ МЕТРИКИ -->
+    <div class="card">
+      <h3>📊 Итоговые метрики проекта</h3>
+      <div class="metrics-wrapper">
+        <div class="metric-box">
+          <span class="metric-val">~650</span>
+          <span class="metric-lbl">Строк кода Python</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">25+</span>
+          <span class="metric-lbl">Функций/методов</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">8</span>
+          <span class="metric-lbl">Категорий тегов</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">5</span>
+          <span class="metric-lbl">Шаблонов сцен</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">7</span>
+          <span class="metric-lbl">Типов кубиков (d4–d100)</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">8</span>
+          <span class="metric-lbl">Горячих клавиш</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">40+</span>
+          <span class="metric-lbl">Коммитов в репозитории</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-val">5</span>
+          <span class="metric-lbl">Файлов документации</span>
+        </div>
+      </div>
+    </div>
+
   </main>
-  <footer>© 2026 Проектная практика. Все права защищены.</footer>
+  <footer>© 2026 Проектная практика. Московский Политех. Все права защищены.</footer>
 </body>
 </html>

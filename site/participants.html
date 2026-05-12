@@ -3,12 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Участники - Python Text Editor</title>
+  <title>Участники - D&D Scenario Editor</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Дополнительные стили только для этой страницы */
+    .role-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      border: 1px solid transparent;
+    }
+    /* Стиль для разработчика (используем вторичный цвет) */
+    .role-dev { 
+      background: rgba(14, 165, 233, 0.1); 
+      color: var(--secondary);
+      border-color: var(--secondary);
+    } 
+    /* Стиль для документатора (используем акцентный цвет) */
+    .role-doc { 
+      background: rgba(234, 179, 8, 0.1); 
+      color: #854d0e;
+      border-color: var(--accent);
+    }
+
+    .participant-section {
+      margin-bottom: 2rem;
+    }
+    
+    /* Таблица задач */
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .task-table th {
+      background: #f1f5f9;
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 2px solid #cbd5e1;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .task-table td {
+      padding: 0.8rem;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .status-done { 
+      color: #166534; 
+      font-weight: 600; 
+      background: rgba(22, 101, 52, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    /* Сетка матрицы ответственности использует mini-feature из index.html стилей */
+    .resp-card strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    .resp-highlight {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1> Python Text Editor</h1>
+    <h1>🎲 D&D Scenario Editor</h1>
     <nav>
       <a href="index.html">Главная</a>
       <a href="about.html">О проекте</a>
@@ -19,26 +90,160 @@
   </header>
   <main>
     <div class="card">
-      <h2>Участники проекта</h2>
-      <table style="width:100%; border-collapse: collapse; margin-top: 1rem;">
-        <tr style="background:#f8f1f9;">
-          <th style="padding:0.8rem; text-align:left;">ФИО</th>
-          <th style="padding:0.8rem; text-align:left;">Роль</th>
-          <th style="padding:0.8rem; text-align:left;">Вклад</th>
-        </tr>
-        <tr>
-          <td style="padding:0.8rem; border-bottom:1px solid #e2e8f0;">Труфанова Анастасия</td>
-          <td style="padding:0.8rem; border-bottom:1px solid #e2e8f0;">Разработка сайта, документация</td>
-          <td style="padding:0.8rem; border-bottom:1px solid #e2e8f0;">Вёрстка сайта, наполнение контентом, оформление отчётов</td>
-        </tr>
-        <tr>
-          <td style="padding:0.8rem;">Русскова Валерия</td>
-          <td style="padding:0.8rem;">Разработка ядра редактора</td>
-          <td style="padding:0.8rem;">Реализация функционала, модификации кода, тестирование</td>
-        </tr>
+      <h2>👥 Команда проекта</h2>
+      <p><strong>Группа:</strong> 251-333 | <strong>Направление:</strong> 09.03.02 АСОиУ | <strong>Период:</strong> 03.02 – 12.05.2026</p>
+    </div>
+
+    <!-- Участник 1: Труфанова Анастасия -->
+    <div class="card participant-section">
+      <span class="role-badge role-doc">Аналитик / Документатор / Тестировщик</span>
+      <h3>Труфанова Анастасия Максимовна</h3>
+      <p>Отвечала за организацию процесса, вёрстку веб-ресурсов, написание технической документации и финальную сборку отчётности.</p>
+      
+      <h4>📋 Индивидуальный план задач:</h4>
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th>Задача</th>
+            <th>Описание</th>
+            <th>Срок</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Настройка Git и структуры</td>
+            <td>Инициализация репозитория, .gitignore, организация папок</td>
+            <td>03.02 – 10.02</td>
+            
+          </tr>
+          <tr>
+            <td>Вёрстка сайта (HTML/CSS)</td>
+            <td>Разработка 5 страниц, адаптивный дизайн, навигация</td>
+            <td>11.02 – 28.02</td>
+            
+          </tr>
+          <tr>
+            <td>Техническая документация</td>
+            <td>TECHNICAL_GUIDE.md, README.md, описание архитектуры</td>
+            <td>01.03 – 20.03</td>
+            
+          </tr>
+          <tr>
+            <td>Оформление отчётов</td>
+            <td>DOCX/PDF, приложения, загрузка в СДО</td>
+            <td>21.03 – 10.04</td>
+            
+          </tr>
+          <tr>
+            <td>Координация команды</td>
+            <td>Распределение задач, синхронизации, контроль дедлайнов</td>
+            <td>Весь период</td>
+            
+          </tr>
+        </tbody>
       </table>
     </div>
+
+    <!-- Участник 2: Русскова Валерия -->
+    <div class="card participant-section">
+      <span class="role-badge role-dev">Ведущий разработчик</span>
+      <h3>Русскова Валерия Андреевна</h3>
+      <p>Занималась исследованием стека технологий, разработкой ядра приложения на Python/tkinter, реализацией модификаций и тестированием.</p>
+      
+      <h4>📋 Индивидуальный план задач:</h4>
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th>Задача</th>
+            <th>Описание</th>
+            <th>Срок</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Исследование и выбор стека</td>
+            <td>Анализ GUI-библиотек, обоснование выбора tkinter</td>
+            <td>03.02 – 17.02</td>
+            
+          </tr>
+          <tr>
+            <td>Разработка ядра (src/main.py)</td>
+            <td>Класс DnDEditor, меню, файловые операции, UTF-8</td>
+            <td>18.02 – 15.03</td>
+            
+          </tr>
+          <tr>
+            <td>Модификации</td>
+            <td>Подсветка тегов, парсинг Markdown, генератор кубиков, статистика</td>
+            <td>16.03 – 10.04</td>
+            
+          </tr>
+          <tr>
+            <td>Тестирование и отладка</td>
+            <td>Проверка на Windows/Linux, обработка ошибок, багфикс</td>
+            <td>11.04 – 30.04</td>
+            
+          </tr>
+          <tr>
+            <td>Визуальные материалы</td>
+            <td>Скриншоты интерфейса, демо-данные для сайта</td>
+            <td>01.05 – 12.05</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Сводная таблица ответственности -->
+    <div class="card">
+      <h3>🤝 Сводная матрица ответственности</h3>
+      <div class="features-grid">
+        <div class="mini-feature resp-card">
+          <strong>Архитектура приложения</strong>
+          <span class="resp-highlight">Русскова В.А.</span> (Основной)<br>
+          <small>Труфанова А.М. (Соисполнитель)</small>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Графический интерфейс (GUI)</strong>
+          <span class="resp-highlight">Русскова В.А.</span>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Подсветка синтаксиса</strong>
+          <span class="resp-highlight">Русскова В.А.</span> (Основной)<br>
+          <small>Труфанова А.М. (Соисполнитель)</small>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Шаблоны сценариев</strong>
+          <span style="color: #854d0e; font-weight: 600;">Труфанова А.М.</span> (Основной)<br>
+          <small>Русскова В.А. (Соисполнитель)</small>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Экспорт в HTML</strong>
+          <span class="resp-highlight">Русскова В.А.</span>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Техническая документация</strong>
+          <span style="color: #854d0e; font-weight: 600;">Труфанова А.М.</span> (Основной)<br>
+          <small>Русскова В.А. (Соисполнитель)</small>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Тестирование</strong>
+          <span style="color: #854d0e; font-weight: 600;">Труфанова А.М.</span> (Основной)<br>
+          <small>Русскова В.А. (Соисполнитель)</small>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Вёрстка сайта</strong>
+          <span style="color: #854d0e; font-weight: 600;">Труфанова А.М.</span>
+        </div>
+        <div class="mini-feature resp-card">
+          <strong>Координация и отчётность</strong>
+          <span style="color: #854d0e; font-weight: 600;">Труфанова А.М.</span> (Основной)<br>
+          <small>Русскова В.А. (Соисполнитель)</small>
+        </div>
+      </div>
+    </div>
+
   </main>
-  <footer>© 2026 Проектная практика. Все права защищены.</footer>
+  <footer>© 2026 Проектная практика. Московский Политех. Все права защищены.</footer>
 </body>
 </html>

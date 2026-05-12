@@ -9,9 +9,8 @@ class DnDEditor:
         self.root.title("🎲 D&D Scenario Editor - Подземелья Политеха")
         self.root.geometry("1000x700")
         self.current_file = None
-        self.is_dark_theme = True  # По умолчанию тёмная тема
+        self.is_dark_theme = True
         
-        # D&D теги для подсветки (категории)
         self.dnd_tags = {
             'combat': ['[БОЙ]', '[COMBAT]', '[FIGHT]'],
             'check': ['[ПРОВЕРКА:', '[CHECK:', '[SAVE:'],
@@ -41,11 +40,9 @@ class DnDEditor:
         self._apply_theme()
 
     def _create_widgets(self):
-        # Верхняя панель с кнопками быстрых тегов
         self.toolbar = tk.Frame(self.root, height=40)
         self.toolbar.pack(side="top", fill="x")
         
-        # Кнопки быстрых тегов
         tags_buttons = [
             ("[БОЙ]", "combat"),
             ("[ПРОВЕРКА:]", "check"),
@@ -69,7 +66,6 @@ class DnDEditor:
             )
             btn.pack(side="left", padx=2, pady=5)
 
-        # Текстовое поле с прокруткой
         text_frame = tk.Frame(self.root)
         text_frame.pack(expand=True, fill="both")
         
@@ -87,14 +83,11 @@ class DnDEditor:
         scrollbar.pack(side="right", fill="y")
         self.text_area.config(yscrollcommand=scrollbar.set)
         
-        # Настройка тегов для подсветки
         self._setup_tags()
         
-        # Привязка к изменению текста для автоподсветки
         self.text_area.bind("<KeyRelease>", self._highlight_tags)
         self.text_area.bind("<ButtonRelease>", self._update_status)
 
-        # Строка состояния
         self.status_bar = tk.Label(
             self.root, 
             text="Готов к работе | Строк: 0 | Слов: 0",
@@ -106,7 +99,6 @@ class DnDEditor:
 
     def _setup_tags(self):
         """Настройка тегов для подсветки синтаксиса"""
-        # 1. Теги для D&D категорий
         for tag_type in self.tag_colors:
             self.text_area.tag_configure(
                 tag_type,
@@ -114,10 +106,8 @@ class DnDEditor:
                 font=("Consolas", 12, "bold")
             )
         
-        # 2. Теги для Markdown (Жирный шрифт)
-        # Жирный текст внутри ** **
+
         self.text_area.tag_configure("md_bold", font=("Consolas", 12, "bold"))
-        # Сами звёздочки делаем серыми (как в VS Code)
         self.text_area.tag_configure("md_asterisk", foreground="#666666")
 
     def _insert_tag(self, tag):
@@ -130,15 +120,12 @@ class DnDEditor:
         """Подсветка D&D тегов и Markdown в тексте"""
         content = self.text_area.get("1.0", tk.END)
         
-        # --- Очистка старых тегов ---
-        # D&D теги
+
         for tag_type in self.tag_colors:
             self.text_area.tag_remove(tag_type, "1.0", tk.END)
-        # Markdown теги
         self.text_area.tag_remove("md_bold", "1.0", tk.END)
         self.text_area.tag_remove("md_asterisk", "1.0", tk.END)
         
-        # --- Подсветка D&D тегов ---
         for tag_type, tag_list in self.dnd_tags.items():
             for tag in tag_list:
                 pattern = re.escape(tag)
@@ -147,11 +134,9 @@ class DnDEditor:
                     end = f"1.0 + {match.end()} chars"
                     self.text_area.tag_add(tag_type, start, end)
 
-        # --- Подсветка Markdown (**жирный**) ---
-        # Ищем шаблон **текст**
+
         md_pattern = r'(\*\*)(.*?)(\*\*)'
         for match in re.finditer(md_pattern, content):
-            # 1. Подсвечиваем звёздочки серым (чтобы не отвлекали)
             asterisk_start = f"1.0 + {match.start(1)} chars"
             asterisk_end = f"1.0 + {match.end(1)} chars"
             self.text_area.tag_add("md_asterisk", asterisk_start, asterisk_end)
@@ -160,7 +145,6 @@ class DnDEditor:
             asterisk2_end = f"1.0 + {match.end(3)} chars"
             self.text_area.tag_add("md_asterisk", asterisk2_start, asterisk2_end)
 
-            # 2. Делаем текст внутри жирным
             bold_start = f"1.0 + {match.start(2)} chars"
             bold_end = f"1.0 + {match.end(2)} chars"
             self.text_area.tag_add("md_bold", bold_start, bold_end)
@@ -173,7 +157,6 @@ class DnDEditor:
         lines = content.count('\n')
         words = len(content.split())
         
-        # Подсчёт D&D элементов
         combat_count = sum(content.count(tag) for tag in self.dnd_tags['combat'])
         check_count = sum(content.count(tag) for tag in self.dnd_tags['check'])
         loot_count = sum(content.count(tag) for tag in self.dnd_tags['loot'])
@@ -187,7 +170,6 @@ class DnDEditor:
         menu = tk.Menu(self.root)
         self.root.config(menu=menu)
 
-        # File menu
         file_menu = tk.Menu(menu, tearoff=False)
         menu.add_cascade(label="Файл", menu=file_menu)
         file_menu.add_command(label="Новый сценарий", command=self.new_file, accelerator="Ctrl+N")
@@ -199,16 +181,14 @@ class DnDEditor:
         file_menu.add_separator()
         file_menu.add_command(label="Выход", command=self.root.quit, accelerator="Ctrl+Q")
 
-        # Templates menu
         template_menu = tk.Menu(menu, tearoff=False)
         menu.add_cascade(label="Шаблоны", menu=template_menu)
         template_menu.add_command(label="Новая локация", command=self._insert_location_template)
         template_menu.add_command(label="NPC", command=self._insert_npc_template)
         template_menu.add_command(label="Боевая сцена", command=self._insert_combat_template)
-        template_menu.add_command(label="Сокрови", command=self._insert_loot_template)
+        template_menu.add_command(label="Сокровище", command=self._insert_loot_template)
         template_menu.add_command(label="Диалог", command=self._insert_dialogue_template)
 
-        # Tools menu
         tools_menu = tk.Menu(menu, tearoff=False)
         menu.add_cascade(label="Инструменты", menu=tools_menu)
         tools_menu.add_command(label="Генератор бросков", command=self._roll_dice, accelerator="Ctrl+D")
@@ -216,14 +196,12 @@ class DnDEditor:
         tools_menu.add_separator()
         tools_menu.add_command(label="Тёмная/Светлая тема", command=self.toggle_theme, accelerator="Ctrl+T")
 
-        # Help menu
         help_menu = tk.Menu(menu, tearoff=False)
         menu.add_cascade(label="Помощь", menu=help_menu)
         help_menu.add_command(label="Справка по тегам", command=self._show_help)
         help_menu.add_command(label="О программе", command=self._show_about)
 
     def _insert_location_template(self):
-        # Обрати внимание: я оставила **, но теперь редактор сам сделает их жирными!
         template = """[ЛОКАЦИЯ] Название локации
 **Тип:** [Таверна/Подземелье/Лес/Город]
 **Описание:**
@@ -400,12 +378,12 @@ class DnDEditor:
             bg_color = "#1e1e1e"
             fg_color = "#d4d4d4"
             text_bg = "#2d2d2d"
-            asterisk_color = "#666666" # Серый для тёмной темы
+            asterisk_color = "#666666"
         else:
             bg_color = "#f0f0f0"
             fg_color = "#000000"
             text_bg = "#ffffff"
-            asterisk_color = "#999999" # Серый для светлой темы
+            asterisk_color = "#999999"
         
         self.root.config(bg=bg_color)
         self.text_area.config(bg=text_bg, fg=fg_color, insertbackground=fg_color)
@@ -419,7 +397,7 @@ class DnDEditor:
     def toggle_theme(self):
         self.is_dark_theme = not self.is_dark_theme
         self._apply_theme()
-        self._highlight_tags() # Перерисовываем теги, чтобы обновить цвет звёздочек
+        self._highlight_tags()
 
     def _bind_shortcuts(self):
         self.root.bind("<Control-n>", lambda e: self.new_file())
@@ -485,8 +463,7 @@ class DnDEditor:
         
         content = self.text_area.get("1.0", tk.END)
         
-        # Простая конверсия Markdown в HTML (включая **жирный**)
-        # Заменяем **...** на <b>...</b>
+
         import re
         html_content_body = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', content)
         

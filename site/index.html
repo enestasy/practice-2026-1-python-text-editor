@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Python Text Editor - Проектная практика</title>
+  <title>D&D Scenario Editor - Проектная практика</title>
+  <!-- Подключаем шрифт Inter для соответствия стилю -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  
 </head>
 <body>
   <header>
-    <h1> Python Text Editor</h1>
+    <h1>🎲 D&D Scenario Editor</h1>
     <nav>
       <a href="index.html">Главная</a>
       <a href="about.html">О проекте</a>
@@ -18,12 +21,54 @@
     </nav>
   </header>
   <main>
+    
+    <!-- Hero Section transformed into Card -->
     <div class="card">
-      <h2>Аннотация проекта</h2>
-      <p>В рамках учебной проектной практики разработан простой текстовый редактор на Python с использованием библиотеки tkinter. Приложение поддерживает создание, открытие, сохранение файлов, а также расширенный функционал: строку состояния с подсчётом слов и символов, горячие клавиши и удобное меню.</p>
-      <img src="img/screenshot_main.png" alt="Скриншот главного окна редактора">
+      <h2>Специализированный редактор сценариев для мастеров подземелий</h2>
+      <p style="font-size: 1.1rem; opacity: 0.9;">Инструмент для создания, структурирования и экспорта сценариев Dungeons & Dragons в рамках проекта «Подземелья Политеха» и партнёрства с издательством «Экивоки».</p>
     </div>
+
+    <div class="card">
+      <h2>📖 Аннотация проекта</h2>
+      <p><strong>D&D Scenario Editor</strong> — это Python-приложение с графическим интерфейсом (tkinter), разработанное студентами группы 251-333 Московского Политеха. Редактор решает проблему хаотичного ведения заметок во время игровых сессий, предоставляя мастеру удобные инструменты для работы с локациями, NPC, боевыми сценами и диалогами.</p>
+      
+      <p>Ключевая особенность — <strong>визуальная подсветка синтаксиса</strong> для D&D-тегов ([БОЙ], [ЛУТ], [NPC] и др.) и встроенный <strong>генератор бросков кубиков</strong>. Проект выполнен в период с февраля по май 2026 года.</p>
+
+      <img src="img/screenshot_main_dnd.png" alt="Главное окно D&D Scenario Editor с подсветкой тегов">
+    </div>
+
+    <!-- Quick Features Preview transformed into Grid inside Card -->
+    <div class="card">
+      <h2>⚡ Краткий обзор возможностей</h2>
+      <div class="features-grid">
+        <div class="mini-feature">
+          <span class="feature-icon">🎨</span>
+          <h3>Подсветка тегов</h3>
+          <p style="font-size: 0.9rem;">8 цветовых категорий для быстрого визуального поиска элементов сценария.</p>
+          <img src="img/screenshot_tag_highlight.png" alt="Подсветка тегов">
+        </div>
+        <div class="mini-feature">
+          <span class="feature-icon">📝</span>
+          <h3>Шаблоны сцен</h3>
+          <p style="font-size: 0.9rem;">Готовые структуры для локаций, NPC, боёв и диалогов в один клик.</p>
+          <img src="img/screenshot_scene_templates.png" alt="Шаблоны сцен">
+        </div>
+        <div class="mini-feature">
+          <span class="feature-icon">🎲</span>
+          <h3>Броски кубиков</h3>
+          <p style="font-size: 0.9rem;">Встроенный рандомайзер d4–d100 с автоматической вставкой результата.</p>
+          <img src="img/screenshot_dice_throwing.png" alt="Броски кубиков">
+        </div>
+        <div class="mini-feature">
+          <span class="feature-icon">💾</span>
+          <h3>Экспорт в HTML</h3>
+          <p style="font-size: 0.9rem;">Конвертация сценария в веб-страницу для использования на стримах и шоу.</p>
+          <img src="img/screenshot_html_export.png" alt="Экспорт в HTML">
+        </div>
+      </div>
+    </div>
+
   </main>
-  <footer>© 2026 Проектная практика. Все права защищены.</footer>
+  <footer>© 2026 Проектная практика. Московский Политех. Группа 251-333.</footer>
 </body>
 </html>
